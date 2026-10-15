@@ -1,0 +1,110 @@
+// Version: 4.0.0
+type AccessControlState__201339279 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__230067015<Principal, UserRole__91647283>
+  };
+type CalculationId__420066584 = CalculationId__972346394;
+type CalculationId__972346394 = Nat;
+type Data__44217153<K, V> = {var count : Nat__227979830; kvs : [var ?(K, V)]};
+type Internal__283199666<K, V> =
+  {children : [var ?Node__204828119<K, V>]; data : Data__44217153<K, V>};
+type Leaf__598469445<K, V> = {data : Data__44217153<K, V>};
+type List__355132335<T> =
+  {
+    var blockIndex : Nat__227979830;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__227979830
+  };
+type List__836382695<T> = List__355132335<T>;
+type Map__230067015<K, V> = Map__405889023<K, V>;
+type Map__405889023<K, V> = Map__603270868<K, V>;
+type Map__603270868<K, V> =
+  {var root : Node__204828119<K, V>; var size : Nat__227979830};
+type MaterialCategory__729498517 = {#aluminum; #plastic; #steel};
+type MaterialCategory__745079081 = {#aluminum; #plastic; #steel};
+type MaterialProperty__397744993 = {unit : Text; value : Float};
+type MaterialProperty__914452700 = {unit : Text; value : Float};
+type Material__110356509 =
+  {
+    category : MaterialCategory__745079081;
+    density : MaterialProperty__914452700;
+    grade : Text;
+    modulusOfElasticity : MaterialProperty__914452700;
+    name : Text;
+    thermalConductivity : MaterialProperty__914452700;
+    thermalExpansion : MaterialProperty__914452700;
+    yieldStrength : MaterialProperty__914452700
+  };
+type Material__538347215 =
+  {
+    category : MaterialCategory__729498517;
+    density : MaterialProperty__397744993;
+    grade : Text;
+    modulusOfElasticity : MaterialProperty__397744993;
+    name : Text;
+    thermalConductivity : MaterialProperty__397744993;
+    thermalExpansion : MaterialProperty__397744993;
+    yieldStrength : MaterialProperty__397744993
+  };
+type Nat__227979830 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__1014824394 =
+  {
+    accessControlState : AccessControlState__201339279;
+    calculationState : {var nextCalculationId : Nat};
+    calculations : Map__230067015<Nat, SavedCalculation__1023307152>;
+    materials : List__836382695<Material__538347215>
+  };
+type NewActor__769816496 =
+  {accessControlState : AccessControlState__201339279};
+type Node__204828119<K, V> =
+  {#internal : Internal__283199666<K, V>; #leaf : Leaf__598469445<K, V>};
+type OldActor__484875852 =
+  {accessControlState : AccessControlState__201339279};
+type OldActor__512397517 = {};
+type SavedCalculation__1023307152 =
+  {
+    calculator : Text;
+    createdAt : Int;
+    id : Nat;
+    inputs : [ValueEntry__728798390];
+    outputs : [ValueEntry__728798390]
+  };
+type SavedCalculation__320378172 =
+  {
+    calculator : Text;
+    createdAt : Timestamp__491009931;
+    id : CalculationId__420066584;
+    inputs : [ValueEntry__932642530];
+    outputs : [ValueEntry__932642530]
+  };
+type Timestamp__301639476 = Int;
+type Timestamp__491009931 = Timestamp__301639476;
+type UserRole__91647283 = {#admin; #guest; #user};
+type ValueEntry__728798390 = {name : Text; unit : Text; value : Text};
+type ValueEntry__932642530 = {name : Text; unit : Text; value : Text};
+{
+  "00000000_000000" : OldActor__512397517 -> NewActor__769816496;
+  "20261015_090000" : (old : OldActor__484875852) -> NewActor__1014824394
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__230067015<Principal, UserRole__91647283>
+    };
+  stable calculationState : {var nextCalculationId : Nat};
+  stable calculations :
+    {
+      var root :
+        Node__204828119<CalculationId__420066584, SavedCalculation__320378172>;
+      var size : Nat__227979830
+    };
+  stable materials :
+    {
+      var blockIndex : Nat__227979830;
+      var blocks : [var [var ?Material__110356509]];
+      var elementIndex : Nat__227979830
+    }
+};

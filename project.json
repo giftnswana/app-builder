@@ -1,0 +1,20 @@
+{
+  "overview": "A mobile-first mechanical engineering toolkit with a universal unit converter, five quick calculators, a searchable material property database, and a saved calculation history with PDF export.",
+  "features": [
+    "Convert values across force, torque, pressure, stress, length, temperature, flow rate and thermal conductivity in SI and imperial units",
+    "Run five quick calculators: beam deflection, shaft sizing, pressure vessel wall thickness, torque conversion and material stress",
+    "Search a reference of 50 common metals and plastics with yield strength, modulus of elasticity, density and thermal properties",
+    "Save calculation results and export them as a PDF report",
+    "Switch the whole app between SI and imperial units with one toggle",
+    "High-contrast, large-touch-target interface with a preliminary-design disclaimer"
+  ],
+  "category": "engineering-calculator",
+  "tags": [
+    "mechanical-engineering",
+    "calculators",
+    "unit-converter",
+    "reference",
+    "productivity"
+  ],
+  "last_updated": "2026-10-15T08:45:46.714Z"
+}
